@@ -81,16 +81,18 @@ export class GameInterface {
     ctx.font = 'bold 25px Tahoma, sans-serif';
     ctx.fillStyle = '#CB3333';
     ctx.textAlign = 'center';
-    ctx.fillText(String(Math.max(0, Math.floor(this.player.health))), 95, 445);
+    ctx.textBaseline = 'middle';
+    ctx.fillText(String(Math.max(0, Math.floor(this.player.health))), 85, 456);
 
     // Score display
     ctx.globalAlpha = this.scoreAlpha;
     ctx.fillStyle = '#112244';
     ctx.textAlign = 'right';
-    ctx.fillText(String(this.game.score), 612, 445);
+    ctx.fillText(String(this.game.score), 612, 456);
 
     ctx.globalAlpha = 1;
     ctx.textAlign = 'start';
+    ctx.textBaseline = 'alphabetic';
 
     // FPS display
     ctx.font = '12px Tahoma, sans-serif';
