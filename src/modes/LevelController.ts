@@ -35,7 +35,7 @@ export class LevelController extends GameMode {
 
     // Load level text (Level 1)
     this.game.registerTimer(450, 1, () => {
-      this.gameInterface.showLevelText('Level 1', 'FFFFFFFFFUUUUUUUU-');
+      this.gameInterface.showLevelText('Level 1', 'Titular Caverns');
     });
   }
 
