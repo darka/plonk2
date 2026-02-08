@@ -39,16 +39,16 @@ function loadSound(name: string, url: string): Promise<void> {
 export async function loadAssets(): Promise<void> {
   await Promise.all([
     // Sprites: name, url, originX, originY, width, height
-    loadImage('player',     'shapes/8.svg',  10.25, 16.4,  20.6,  25.55),
-    loadImage('gun',        'shapes/66.svg',  2.25,  5.75,  4.45,   6.8),
-    loadImage('bullet',     'shapes/10.svg',  3.1,   3.05,  6.2,    6.2),
-    loadImage('flier',      'shapes/20.svg', 10.7,  16.2,  21.35,  32.45),
-    loadImage('bubble',     'shapes/3.svg',   4.5,   4.95,  9.8,    9.8),
-    loadImage('seeker',     'shapes/17.svg', 14.7,  14.9,  29.75,  29.7),
-    loadImage('background', 'shapes/64.svg', -40.0,  27.2, 853.75, 544.0),
-    loadImage('interfaceBg','shapes/88.svg', -23.05,-408.1,594.75,  49.0),
-    loadImage('orbPad',     'shapes/30.svg',  2.1,  -4.0, 956.3,  552.2),
-    loadImage('orb',        'shapes/32.svg',  0.0,   0.0, 445.05, 445.05),
+    loadImage('player',     'shapes/player.svg',       10.25, 16.4,  20.6,  25.55),
+    loadImage('gun',        'shapes/gun.svg',           2.25,  5.75,  4.45,   6.8),
+    loadImage('bullet',     'shapes/bullet.svg',        3.1,   3.05,  6.2,    6.2),
+    loadImage('flier',      'shapes/flier.svg',        10.7,  16.2,  21.35,  32.45),
+    loadImage('bubble',     'shapes/bubble.svg',        4.5,   4.95,  9.8,    9.8),
+    loadImage('seeker',     'shapes/seeker.svg',       14.7,  14.9,  29.75,  29.7),
+    loadImage('background', 'shapes/background.svg',  -40.0,  27.2, 853.75, 544.0),
+    loadImage('interfaceBg','shapes/interface-bg.svg', -23.05,-408.1,594.75,  49.0),
+    loadImage('orbPad',     'shapes/orb-pad.svg',       2.1,  -4.0, 956.3,  552.2),
+    loadImage('orb',        'shapes/orb.svg',           0.0,   0.0, 445.05, 445.05),
     // Sounds
     loadSound('phaser',    'sounds/1_PhaserSound.mp3'),
     loadSound('explosion', 'sounds/2_ExplosionSound.mp3'),
