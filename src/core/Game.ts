@@ -38,6 +38,7 @@ export class Game {
 
   update(): void {
     this.gameMode.update();
+    this.ctx.clearRect(0, 0, this.windowWidth, this.windowHeight);
     this.gameMode.render(this.ctx);
     this.tick_ += 1;
 
