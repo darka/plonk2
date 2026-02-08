@@ -21,6 +21,7 @@ export class PlayerBullet extends PlayfieldObject {
   render(ctx: CanvasRenderingContext2D): void {
     ctx.save();
     ctx.translate(this.position.x, this.position.y);
+    ctx.scale(1.5, 1.5);
     drawBullet(ctx);
     ctx.restore();
   }

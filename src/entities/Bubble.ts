@@ -9,8 +9,9 @@ export class Bubble extends PlayfieldObject {
 
   constructor(game: Game, position: Vec) {
     super(game, position);
+    this.alpha = 0.4;
     this.acc = Math.random() * 0.05;
-    game.registerTimer(30 + Math.floor(Math.random() * 30), 1, () => this.markAsUnusedInArray());
+    game.registerTimer(60 + Math.floor(Math.random() * 60), 1, () => this.markAsUnusedInArray());
   }
 
   update(): void {

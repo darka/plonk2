@@ -40,14 +40,14 @@ export class GameInterface {
     this.levelOutlineText = outline;
 
     Fading.fadeIn(this.game, this.levelTitleFadeable, 0.6, 0.1);
-    this.game.registerTimer(100, 1, () => {
+    this.game.registerTimer(200, 1, () => {
       Fading.fadeIn(this.game, this.levelOutlineFadeable, 0.6, 0.1);
     });
-    this.game.registerTimer(250, 1, () => {
+    this.game.registerTimer(500, 1, () => {
       Fading.fadeOut(this.game, this.levelTitleFadeable);
       Fading.fadeOut(this.game, this.levelOutlineFadeable);
     });
-    this.game.registerTimer(300, 1, () => {
+    this.game.registerTimer(600, 1, () => {
       this.levelTitleText = null;
       this.levelOutlineText = null;
     });

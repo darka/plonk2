@@ -12,8 +12,8 @@ async function main(): Promise<void> {
   // Start playing directly
   game.startPlaying();
 
-  // 30 FPS game loop
-  const FRAME_MS = 1000 / 30;
+  // 60 FPS game loop
+  const FRAME_MS = 1000 / 60;
   let lastTime = 0;
   let accumulator = 0;
 

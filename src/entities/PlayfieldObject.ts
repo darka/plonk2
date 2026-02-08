@@ -65,7 +65,7 @@ export class PlayfieldObject {
   }
 
   spawnBubblesAroundMaybe(): void {
-    if (Math.random() > 0.9) {
+    if (Math.random() > 0.95) {
       this.game.getPlayfield().addBubbles(this.position.copy());
     }
   }

@@ -7,7 +7,7 @@ export interface Fadeable {
 export class Fading {
   static fadeIn(game: Game, target: Fadeable, maxFade: number, speed: number = 0.05): void {
     target.alpha = 0;
-    game.registerTimer(5, 20, () => {
+    game.registerTimer(10, 20, () => {
       if (target.alpha + speed < maxFade) {
         target.alpha += speed;
       } else {
@@ -17,7 +17,7 @@ export class Fading {
   }
 
   static fadeOut(game: Game, target: Fadeable): void {
-    game.registerTimer(5, 20, () => {
+    game.registerTimer(10, 20, () => {
       if (target.alpha - 0.05 >= 0) {
         target.alpha -= 0.05;
       } else {
@@ -27,9 +27,9 @@ export class Fading {
   }
 
   static quickFlash(game: Game, target: Fadeable): void {
-    game.registerTimer(1, 4, () => { target.alpha -= 0.25; });
-    game.registerTimer(4, 1, () => { game.registerTimer(1, 4, () => { target.alpha += 0.25; }); });
-    game.registerTimer(8, 1, () => { game.registerTimer(1, 4, () => { target.alpha -= 0.25; }); });
-    game.registerTimer(12, 1, () => { game.registerTimer(1, 4, () => { target.alpha += 0.25; }); });
+    game.registerTimer(2, 4, () => { target.alpha -= 0.25; });
+    game.registerTimer(8, 1, () => { game.registerTimer(2, 4, () => { target.alpha += 0.25; }); });
+    game.registerTimer(16, 1, () => { game.registerTimer(2, 4, () => { target.alpha -= 0.25; }); });
+    game.registerTimer(24, 1, () => { game.registerTimer(2, 4, () => { target.alpha += 0.25; }); });
   }
 }

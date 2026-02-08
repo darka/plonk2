@@ -21,9 +21,9 @@ export class Player extends PlayfieldObject {
   private static readonly ROTATION_SPEED = 11.25;
   private static readonly ACCELERATION_COEF = 0.4;
   private static readonly MAX_SPEED_FORWARD = 2;
-  private static readonly FRICTION = 0.9;
+  private static readonly FRICTION = 0.9487;
   private static readonly EDGE_HIT_COEF = 0.4;
-  private static readonly SHOOTING_DELAY = 15;
+  private static readonly SHOOTING_DELAY = 30;
   private static readonly COLLISION_RADIUS = 10;
 
   public playerGun: PlayerGun;

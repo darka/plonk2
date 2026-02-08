@@ -6,7 +6,7 @@ import { playExplosion } from '../audio/Audio';
 
 export class Explosion extends PlayfieldObject {
   private frame: number = 0;
-  private static readonly TOTAL_FRAMES = 15;
+  private static readonly TOTAL_FRAMES = 30;
 
   constructor(game: Game, position: Vec) {
     super(game, position);

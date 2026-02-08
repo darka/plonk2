@@ -30,13 +30,13 @@ export class Playfield {
     this.player = new Player(game, new Vec(this.width / 2, this.height / 2));
     this.player.makeInvisible();
 
-    game.registerTimer(400, 1, () => {
+    game.registerTimer(800, 1, () => {
       this.player.fadeIn();
       this.ignorePlayer = false;
     });
-    game.registerTimer(450, 1, () => { this.player.canShoot = true; });
-    game.registerTimer(600, 1, () => {
-      game.registerTimer(450, 1000, () => this.spawnFlierSwarm());
+    game.registerTimer(900, 1, () => { this.player.canShoot = true; });
+    game.registerTimer(1200, 1, () => {
+      game.registerTimer(900, 1000, () => this.spawnFlierSwarm());
       this.spawnFlierSwarm();
     });
   }
@@ -96,7 +96,7 @@ export class Playfield {
   }
 
   spawnFlierSwarm(): void {
-    this.game.registerTimer(Math.floor(15 + 20 * Math.random()), 20, () => this.addFlier());
+    this.game.registerTimer(Math.floor(30 + 40 * Math.random()), 20, () => this.addFlier());
   }
 
   addBullet(position: Vec, direction: Vec): void {
@@ -140,11 +140,11 @@ export class Playfield {
     this.addExplosion(this.player.position);
     this.ignorePlayer = true;
 
-    this.game.registerTimer(50, 1, () => {
+    this.game.registerTimer(100, 1, () => {
       for (let i = 0; i < this.enemies.length; ++i) {
         this.enemies[i].die();
       }
-      this.game.registerTimer(10, 1, () => {
+      this.game.registerTimer(20, 1, () => {
         for (let i = 0; i < this.playfieldObjects.length; ++i) {
           this.playfieldObjects[i].markAsUnusedInArray();
         }

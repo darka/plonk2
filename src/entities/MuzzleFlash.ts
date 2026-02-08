@@ -6,7 +6,7 @@ import { drawMuzzleFlash } from '../rendering/Sprites';
 export class MuzzleFlash extends PlayfieldObject {
   private player: Player;
   private frame: number = 0;
-  private static readonly TOTAL_FRAMES = 6;
+  private static readonly TOTAL_FRAMES = 12;
 
   constructor(game: Game, player: Player, rotation: number) {
     super(game, player.position.copy());
