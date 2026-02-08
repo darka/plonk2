@@ -30,12 +30,12 @@ export class Playfield {
     this.player = new Player(game, new Vec(this.width / 2, this.height / 2));
     this.player.makeInvisible();
 
-    game.registerTimer(800, 1, () => {
+    game.registerTimer(120, 1, () => {
       this.player.fadeIn();
       this.ignorePlayer = false;
     });
-    game.registerTimer(900, 1, () => { this.player.canShoot = true; });
-    game.registerTimer(1200, 1, () => {
+    game.registerTimer(180, 1, () => { this.player.canShoot = true; });
+    game.registerTimer(300, 1, () => {
       game.registerTimer(900, 1000, () => this.spawnFlierSwarm());
       this.spawnFlierSwarm();
     });
