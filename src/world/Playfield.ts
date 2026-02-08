@@ -3,6 +3,7 @@ import type { Game } from '../core/Game';
 import { Player } from '../entities/Player';
 import { PlayerBullet } from '../entities/PlayerBullet';
 import { Flier } from '../entities/Flier';
+import { Seeker } from '../entities/Seeker';
 import { Bubble } from '../entities/Bubble';
 import { Explosion } from '../entities/Explosion';
 import { MuzzleFlash } from '../entities/MuzzleFlash';
@@ -38,6 +39,10 @@ export class Playfield {
     game.registerTimer(300, 1, () => {
       game.registerTimer(900, 1000, () => this.spawnFlierSwarm());
       this.spawnFlierSwarm();
+    });
+    game.registerTimer(600, 1, () => {
+      game.registerTimer(600, 1000, () => this.addSeeker());
+      this.addSeeker();
     });
   }
 
@@ -107,6 +112,12 @@ export class Playfield {
 
   addFlier(): void {
     const enemy = new Flier(this.game, this.randomSpawnCircleLocation(), this.player);
+    this.playfieldObjects.push(enemy);
+    this.enemies.push(enemy);
+  }
+
+  addSeeker(): void {
+    const enemy = new Seeker(this.game, this.randomSpawnCircleLocation(), this.player);
     this.playfieldObjects.push(enemy);
     this.enemies.push(enemy);
   }
