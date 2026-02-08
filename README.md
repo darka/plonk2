@@ -4,7 +4,7 @@ A TypeScript/Canvas remake of [Plonk](https://github.com/darka/plonk), originall
 
 Navigate a submarine through underwater caverns, dodge enemies, and shoot your way to survival.
 
-![Screenshot](Screenshot.png)
+<img src="Screenshot.png" width="75%">
 
 ## Controls
 
