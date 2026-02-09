@@ -1,4 +1,4 @@
-# Plonk
+# Plonk 2
 
 A TypeScript/Canvas remake of [Plonk](https://github.com/darka/plonk), originally built in Flash/ActionScript 3.
 
