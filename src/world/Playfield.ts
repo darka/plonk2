@@ -4,6 +4,10 @@ import { Player } from '../entities/Player';
 import { PlayerBullet } from '../entities/PlayerBullet';
 import { Flier } from '../entities/Flier';
 import { Seeker } from '../entities/Seeker';
+import { Spinner } from '../entities/Spinner';
+import { Bomber } from '../entities/Bomber';
+import { Dasher } from '../entities/Dasher';
+import { Mine } from '../entities/Mine';
 import { Bubble } from '../entities/Bubble';
 import { Explosion } from '../entities/Explosion';
 import { MuzzleFlash } from '../entities/MuzzleFlash';
@@ -36,14 +40,6 @@ export class Playfield {
       this.ignorePlayer = false;
     });
     game.registerTimer(180, 1, () => { this.player.canShoot = true; });
-    game.registerTimer(300, 1, () => {
-      game.registerTimer(900, 1000, () => this.spawnFlierSwarm());
-      this.spawnFlierSwarm();
-    });
-    game.registerTimer(600, 1, () => {
-      game.registerTimer(600, 1000, () => this.addSeeker());
-      this.addSeeker();
-    });
   }
 
   update(): void {
@@ -100,8 +96,14 @@ export class Playfield {
     }
   }
 
-  spawnFlierSwarm(): void {
-    this.game.registerTimer(Math.floor(30 + 40 * Math.random()), 20, () => this.addFlier());
+  clearEnemies(): void {
+    for (let i = 0; i < this.enemies.length; ++i) {
+      this.enemies[i].die();
+    }
+  }
+
+  spawnFlierSwarm(count: number = 20): void {
+    this.game.registerTimer(Math.floor(30 + 40 * Math.random()), count, () => this.addFlier());
   }
 
   addBullet(position: Vec, direction: Vec): void {
@@ -120,6 +122,30 @@ export class Playfield {
     const enemy = new Seeker(this.game, this.randomSpawnCircleLocation(), this.player);
     this.playfieldObjects.push(enemy);
     this.enemies.push(enemy);
+  }
+
+  addSpinner(): void {
+    const enemy = new Spinner(this.game, this.randomSpawnCircleLocation(), this.player);
+    this.playfieldObjects.push(enemy);
+    this.enemies.push(enemy);
+  }
+
+  addBomber(): void {
+    const enemy = new Bomber(this.game, this.randomSpawnCircleLocation(), this.player);
+    this.playfieldObjects.push(enemy);
+    this.enemies.push(enemy);
+  }
+
+  addDasher(): void {
+    const enemy = new Dasher(this.game, this.randomSpawnCircleLocation(), this.player);
+    this.playfieldObjects.push(enemy);
+    this.enemies.push(enemy);
+  }
+
+  addMine(position: Vec): void {
+    const mine = new Mine(this.game, position, this.player);
+    this.playfieldObjects.push(mine);
+    this.enemies.push(mine);
   }
 
   addBubbles(position: Vec): void {

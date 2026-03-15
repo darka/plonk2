@@ -83,6 +83,106 @@ export function drawMuzzleFlash(ctx: CanvasRenderingContext2D, frame: number, to
   ctx.globalAlpha = 1;
 }
 
+// --- Programmatic enemy sprites ---
+
+export function drawSpinner(ctx: CanvasRenderingContext2D): void {
+  // Rotating ring with spokes
+  ctx.strokeStyle = '#66ddff';
+  ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  ctx.arc(0, 0, 10, 0, Math.PI * 2);
+  ctx.stroke();
+
+  // Inner dot
+  ctx.fillStyle = '#aaeeff';
+  ctx.beginPath();
+  ctx.arc(0, 0, 3, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Spokes
+  for (let i = 0; i < 4; i++) {
+    const a = (i * Math.PI) / 2;
+    ctx.beginPath();
+    ctx.moveTo(Math.cos(a) * 4, Math.sin(a) * 4);
+    ctx.lineTo(Math.cos(a) * 10, Math.sin(a) * 10);
+    ctx.stroke();
+  }
+}
+
+export function drawBomber(ctx: CanvasRenderingContext2D): void {
+  // Large dark hexagon
+  ctx.fillStyle = '#334455';
+  ctx.strokeStyle = '#556677';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const a = (i * Math.PI) / 3 - Math.PI / 6;
+    const x = Math.cos(a) * 18;
+    const y = Math.sin(a) * 18;
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  // Inner circle detail
+  ctx.fillStyle = '#667788';
+  ctx.beginPath();
+  ctx.arc(0, 0, 8, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Center dot
+  ctx.fillStyle = '#ff6644';
+  ctx.beginPath();
+  ctx.arc(0, 0, 3, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+export function drawDasher(ctx: CanvasRenderingContext2D): void {
+  // Arrow/chevron shape pointing up (rotation handled by caller)
+  ctx.fillStyle = '#ff4466';
+  ctx.strokeStyle = '#ff8899';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(0, -14);    // tip
+  ctx.lineTo(8, 10);     // right
+  ctx.lineTo(0, 4);      // inner notch
+  ctx.lineTo(-8, 10);    // left
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+}
+
+export function drawMine(ctx: CanvasRenderingContext2D, age: number): void {
+  // Pulsing circle with spikes
+  const pulse = 1 + 0.2 * Math.sin(age * 0.15);
+  const baseRadius = 6 * pulse;
+
+  // Spikes
+  ctx.strokeStyle = '#ffaa33';
+  ctx.lineWidth = 1.5;
+  for (let i = 0; i < 6; i++) {
+    const a = (i * Math.PI) / 3;
+    ctx.beginPath();
+    ctx.moveTo(Math.cos(a) * baseRadius, Math.sin(a) * baseRadius);
+    ctx.lineTo(Math.cos(a) * (baseRadius + 4), Math.sin(a) * (baseRadius + 4));
+    ctx.stroke();
+  }
+
+  // Core
+  ctx.fillStyle = '#ff8822';
+  ctx.beginPath();
+  ctx.arc(0, 0, baseRadius, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Inner glow
+  ctx.fillStyle = '#ffcc44';
+  ctx.beginPath();
+  ctx.arc(0, 0, baseRadius * 0.5, 0, Math.PI * 2);
+  ctx.fill();
+}
+
 // Menu sprites
 
 export function drawOrbPad(ctx: CanvasRenderingContext2D, x: number, y: number): void {

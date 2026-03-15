@@ -68,4 +68,12 @@ export class Game {
   pauseTimers(): void {
     this.paused = true;
   }
+
+  unpauseTimers(): void {
+    this.paused = false;
+  }
+
+  clearTimers(): void {
+    this.timers = this.timers.filter(t => t.global);
+  }
 }
